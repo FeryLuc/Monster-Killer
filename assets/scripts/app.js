@@ -16,6 +16,8 @@ if (isNaN(chosenMaxLife) || chosenMaxLife <= 0) {
 let currentMonsterHealth = chosenMaxLife;
 let currentPlayerHealth = chosenMaxLife;
 let hasBonusLife = true;
+let killCount = 0;
+let deathCount = 0;
 
 adjustHealthBars(chosenMaxLife);
 
@@ -39,13 +41,23 @@ function endRound() {
 
     if (currentMonsterHealth <= 0 && currentPlayerHealth > 0) {
         alert('You won!');
+        killCount++;
+        killCounter(killCount);
+        ratioCalculation(killCount, deathCount);
         
     } else if (currentPlayerHealth <= 0 && currentMonsterHealth > 0) {
         alert('You lost!');
-        
+        deathCount++;
+        deathCounter(deathCount);
+        ratioCalculation(killCount, deathCount);
+
     } else if (currentPlayerHealth <= 0 && currentMonsterHealth <= 0) {
         alert('You have a draw!');
-        
+        killCount++;
+        deathCount++;
+        killCounter(killCount);
+        deathCounter(deathCount);
+        ratioCalculation(killCount, deathCount);
     }
 
     if (currentMonsterHealth <= 0 || currentPlayerHealth <=0) {
