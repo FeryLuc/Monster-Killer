@@ -59,7 +59,7 @@ html {
   }
   
   #health-levels,
-  #controls {
+  #controls, #counter {
     margin: 2rem auto;
     width: 30rem;
     text-align: center;
