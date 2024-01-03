@@ -158,7 +158,7 @@ function healPlayerHandler() {
     endRound();
 }
 function printLogHandler(){
-    
+    alert('To open the console:\n-Windows/Linux: CTRL+SHIFT+J\n-Mac: Command+Option+J')
     console.log('------------------------------');
     let i = 0;
     for (const el of battleLog) {
