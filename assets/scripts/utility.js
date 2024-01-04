@@ -73,12 +73,14 @@ function earnGold(amount) {
 }
 
 function earnXpAndLevel(amount) {
-  if (xpBar.value === xpBar.max) {
+  const xpAmount = Math.round(Math.random() * amount);
+
+  if (xpBar.value + xpAmount >= xpBar.max) {
+    const remainingXp = (xpBar.value + xpAmount) - xpBar.max;
     playerLevel.textContent = +playerLevel.textContent + 1;
-    xpBar.value = 0;
-    xpBar.max = +xpBar.max*1.5;
+    xpBar.value = remainingXp;
+    xpBar.max = +xpBar.max * 1.5;
   } else {
-    const xpAmount = Math.round(Math.random() * amount);
-    xpBar.value = +xpBar.value + xpAmount;
+    xpBar.value += xpAmount;
   }
 }
