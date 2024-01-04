@@ -15,7 +15,7 @@ const enteredValue = prompt('Maximum life for you and the monster.', '100');
 const battleLog = [];
 
 let chosenMaxLife = parseInt(enteredValue);
-if (isNaN(chosenMaxLife) || chosenMaxLife <= 100) {
+if (isNaN(chosenMaxLife) || chosenMaxLife < 100) {
     chosenMaxLife = 100;
     alert('You entered something wrong, default value of 100 was used.');
 }
@@ -35,7 +35,7 @@ for (let index = 1; index <= chosenMaxLife; index+=10) {
 
 adjustHealthBars(chosenMaxLife);
 
-function writeToLog(event, value, monsterHealth, playerHealth) {
+function writeToLog(event, value, monsterHealth, playerHealth, gold) {
     let logEntry;
     switch (event) {
         case LOG_EVENT_PLAYER_ATTACK:
@@ -79,7 +79,8 @@ function writeToLog(event, value, monsterHealth, playerHealth) {
                 event: event,
                 value: value,
                 finalMonsterHealth: monsterHealth,
-                finalPlayerHealth: playerHealth
+                finalPlayerHealth: playerHealth,
+                gold: gold
             };
             break;
     
@@ -113,14 +114,14 @@ function endRound() {
         killCounter(killCount);
         ratioCalculation(killCount, deathCount);
         earnGold(goldAmount);
-        writeToLog(LOG_EVENT_GAME_OVER, 'PLAYER WON', currentMonsterHealth, currentPlayerHealth);
+        writeToLog(LOG_EVENT_GAME_OVER, 'PLAYER WON', currentMonsterHealth, currentPlayerHealth, goldAmount);
         
     } else if (currentPlayerHealth <= 0 && currentMonsterHealth > 0) {
         alert('You lost!');
         deathCount++;
         deathCounter(deathCount);
         ratioCalculation(killCount, deathCount);
-        writeToLog(LOG_EVENT_GAME_OVER, 'MONSTER WON', currentMonsterHealth, currentPlayerHealth);
+        writeToLog(LOG_EVENT_GAME_OVER, 'MONSTER WON', currentMonsterHealth, currentPlayerHealth, 0);
 
     } else if (currentPlayerHealth <= 0 && currentMonsterHealth <= 0) {
         alert('You have a draw!');
@@ -129,7 +130,7 @@ function endRound() {
         killCounter(killCount);
         deathCounter(deathCount);
         ratioCalculation(killCount, deathCount);
-        writeToLog(LOG_EVENT_GAME_OVER, 'A DRAW', currentMonsterHealth, currentPlayerHealth);
+        writeToLog(LOG_EVENT_GAME_OVER, 'A DRAW', currentMonsterHealth, currentPlayerHealth, 0);
     }
 
     if (currentMonsterHealth <= 0 || currentPlayerHealth <=0) {
