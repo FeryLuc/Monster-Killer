@@ -1,3 +1,4 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css');
 html {
     font-family: sans-serif;
   }
@@ -84,4 +85,86 @@ html {
     text-align: center;
     margin: 0 0.5rem;
   }
+  #inventory {
+    box-sizing: border-box;
+    position: relative;
+    text-align: end;
+    padding: 20px 40px;
+  }
+  #bag {
+    display: inline-block;
+    position: relative;
+    color: white;
+    font-size: 3rem;
+    cursor: pointer;
+  }
+  #bag:hover{
+    color: gray;
+  }
+  #bag:hover::after {
+    content: 'Inventory(12)';
+    position: absolute;
+    top: 100%;
+    right: -90%;
+    font-size: 1rem;
+  }
+  #open-bag {
+    position: absolute;
+    bottom: -50px;
+    right: 0;
+    display: none;
+    flex-direction: column;
+    width: 25%;
+    height: 300px;
+    border: 1px solid gray;
+
+    #items-space {
+      box-sizing: border-box;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      width: 100%;
+      height: 90%;
+
+      div {
+        width: 20%;
+        height: 25%;
+        border: 1px solid blue;
+      }
+    }
+
+    #money-bar {
+      color: lightgray;
+      box-sizing: border-box;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px;
+      width: 100%;
+      height: 10%;
+      border: 1px solid gray;
+
+      div{
+        color: gold;
+        width: 80%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: baseline;
+        gap: 5px;
+
+        i{
+          font-size: 0.95rem;
+        }
+        p{
+          font-size: 0.95rem;
+        }
+      }
+      #close-bag {
+        cursor: pointer;
+      }
+    }
+  }
+  
   

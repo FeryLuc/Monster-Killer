@@ -4,6 +4,9 @@ const bonusLifeEl = document.getElementById('bonus-life');
 const monsterKilled = document.getElementById('kill');
 const playerDeath = document.getElementById('death');
 const ratio = document.getElementById('ratio');
+const bag = document.getElementById('bag');
+const openBag = document.getElementById('open-bag');
+const closeBag = document.getElementById('close-bag');
 
 const attackBtn = document.getElementById('attack-btn');
 const strongAttackBtn = document.getElementById('strong-attack-btn');

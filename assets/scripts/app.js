@@ -170,8 +170,19 @@ function printLogHandler(){
     }
 }
 
+function openInventory() {
+    bag.style.display = 'none';
+    openBag.style.display = 'flex';
+}
+function closeInventory() {
+    openBag.style.display ='none';
+    bag.style.display = 'inline-block';
+}
 
 attackBtn.addEventListener('click', attackHandler);
 strongAttackBtn.addEventListener('click', strongAttackHandler);
 healBtn.addEventListener('click', healPlayerHandler);
 logBtn.addEventListener('click', printLogHandler);
+
+bag.addEventListener('click', openInventory);
+closeBag.addEventListener('click', closeInventory);
