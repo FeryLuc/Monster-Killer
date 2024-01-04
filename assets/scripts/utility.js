@@ -7,6 +7,7 @@ const ratio = document.getElementById('ratio');
 const bag = document.getElementById('bag');
 const openBag = document.getElementById('open-bag');
 const closeBag = document.getElementById('close-bag');
+const gold = document.getElementById('gold');
 
 const attackBtn = document.getElementById('attack-btn');
 const strongAttackBtn = document.getElementById('strong-attack-btn');
@@ -63,4 +64,8 @@ function ratioCalculation(kill, death) {
   } else {
     ratio.textContent = (kill/death).toFixed(2);
   }
+}
+
+function earnGold(amount) {
+  gold.textContent = +gold.textContent + Math.round(amount * 100) / 100;
 }

@@ -1,5 +1,5 @@
 const ATTACK_VALUE = 10;
-const STRONG_ATTACK_VALUE = 17;
+const STRONG_ATTACK_VALUE = 20;
 const MONSTER_ATTACK_VALUE = 14;
 const HEAL_VALUE = 20;
 
@@ -15,15 +15,23 @@ const enteredValue = prompt('Maximum life for you and the monster.', '100');
 const battleLog = [];
 
 let chosenMaxLife = parseInt(enteredValue);
-if (isNaN(chosenMaxLife) || chosenMaxLife <= 0) {
+if (isNaN(chosenMaxLife) || chosenMaxLife <= 100) {
     chosenMaxLife = 100;
     alert('You entered something wrong, default value of 100 was used.');
 }
+
 let currentMonsterHealth = chosenMaxLife;
 let currentPlayerHealth = chosenMaxLife;
 let hasBonusLife = true;
 let killCount = 0;
 let deathCount = 0;
+let goldAmount = 0;
+for (let index = 1; index <= chosenMaxLife; index+=10) {
+    goldAmount += 0.10;
+    goldAmount = Math.round(goldAmount * 100) / 100;
+    console.log(`${index} : ${goldAmount}`);
+}
+
 
 adjustHealthBars(chosenMaxLife);
 
@@ -104,6 +112,7 @@ function endRound() {
         killCount++;
         killCounter(killCount);
         ratioCalculation(killCount, deathCount);
+        earnGold(goldAmount);
         writeToLog(LOG_EVENT_GAME_OVER, 'PLAYER WON', currentMonsterHealth, currentPlayerHealth);
         
     } else if (currentPlayerHealth <= 0 && currentMonsterHealth > 0) {
