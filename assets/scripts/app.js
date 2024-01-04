@@ -2,6 +2,7 @@ const ATTACK_VALUE = 10;
 const STRONG_ATTACK_VALUE = 20;
 const MONSTER_ATTACK_VALUE = 14;
 const HEAL_VALUE = 20;
+const XP_VALUE = 50;
 
 const MODE_ATTACK = 'ATTACK';
 const MODE_STRONG_ATTACK = 'STRONG_ATTACK';
@@ -114,7 +115,7 @@ function endRound() {
         killCounter(killCount);
         ratioCalculation(killCount, deathCount);
         earnGold(goldAmount);
-        earnXpAndLevel(10);
+        earnXpAndLevel(XP_VALUE);
         writeToLog(LOG_EVENT_GAME_OVER, 'PLAYER WON', currentMonsterHealth, currentPlayerHealth, goldAmount);
         
     } else if (currentPlayerHealth <= 0 && currentMonsterHealth > 0) {

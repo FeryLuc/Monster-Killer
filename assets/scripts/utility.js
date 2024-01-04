@@ -78,6 +78,7 @@ function earnXpAndLevel(amount) {
     xpBar.value = 0;
     xpBar.max = +xpBar.max*1.5;
   } else {
-    xpBar.value = +xpBar.value + amount;
+    const xpAmount = Math.round(Math.random() * amount);
+    xpBar.value = +xpBar.value + xpAmount;
   }
 }
