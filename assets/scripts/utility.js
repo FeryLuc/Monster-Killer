@@ -8,6 +8,8 @@ const bag = document.getElementById('bag');
 const openBag = document.getElementById('open-bag');
 const closeBag = document.getElementById('close-bag');
 const gold = document.getElementById('gold');
+const xpBar = document.getElementById('player-xp');
+const playerLevel = document.getElementById('level');
 
 const attackBtn = document.getElementById('attack-btn');
 const strongAttackBtn = document.getElementById('strong-attack-btn');
@@ -68,4 +70,14 @@ function ratioCalculation(kill, death) {
 
 function earnGold(amount) {
   gold.textContent = +gold.textContent + Math.round(amount * 100) / 100;
+}
+
+function earnXpAndLevel(amount) {
+  if (xpBar.value === xpBar.max) {
+    playerLevel.textContent = +playerLevel.textContent + 1;
+    xpBar.value = 0;
+    xpBar.max = +xpBar.max*1.5;
+  } else {
+    xpBar.value = +xpBar.value + amount;
+  }
 }

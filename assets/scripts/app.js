@@ -114,6 +114,7 @@ function endRound() {
         killCounter(killCount);
         ratioCalculation(killCount, deathCount);
         earnGold(goldAmount);
+        earnXpAndLevel(10);
         writeToLog(LOG_EVENT_GAME_OVER, 'PLAYER WON', currentMonsterHealth, currentPlayerHealth, goldAmount);
         
     } else if (currentPlayerHealth <= 0 && currentMonsterHealth > 0) {
